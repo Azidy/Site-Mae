@@ -268,3 +268,26 @@
   new PureCounter();
 
 })()
+
+function atualizarIdadePessoa1975() {
+  const elIdade = document.getElementById("idade");
+  if (!elIdade) return;
+
+  const birthDate = new Date(1975, 8, 13);
+  const hoje = new Date();
+
+  let idade = hoje.getFullYear() - birthDate.getFullYear();
+
+  const mesAtual = hoje.getMonth();
+  const diaAtual = hoje.getDate();
+  const mesNasc = birthDate.getMonth();
+  const diaNasc = birthDate.getDate();
+
+  if (mesAtual < mesNasc || (mesAtual === mesNasc && diaAtual < diaNasc)) {
+    idade--;
+  }
+
+  elIdade.textContent = String(idade);
+}
+
+document.addEventListener("DOMContentLoaded", atualizarIdadePessoa1975);
